@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "Patched Denoising Diffusion Models For High-Resolution Image Synthesis"
+date:   2023-08-02 23:59:59 +00:00
+image: /images/patchdm.png
+categories: research
+authors: "Zheng Ding*, <strong>Mengqi Zhang*</strong>, Jiajun Wu, and Zhuowen Tu."
+venue: "Under conference review, 2023"
+arxiv: https://arxiv.org/abs/2308.01316
+code: https://github.com/mlpc-ucsd/Patch-DM
+---
+We propose an effective denoising diffusion model for generating high-resolution images (e.g., 1024×512), trained on small-size image patches (e.g., 64×64).
