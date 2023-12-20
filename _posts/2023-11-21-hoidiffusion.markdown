@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "HOIDiffu- sion: Generating Realistic 3D Hand-Object Interaction Data"
+title:  "HOIDiffusion: Generating Realistic 3D Hand-Object Interaction Data"
 date:   2023-11-21 23:59:59 +00:00
 image: /images/hoidiffusion.png
 categories: research
