@@ -2,7 +2,7 @@
 layout: post
 title:  "HOIDiffu- sion: Generating Realistic 3D Hand-Object Interaction Data"
 date:   2023-11-21 23:59:59 +00:00
-image: images/hoidiffusion.png
+image: /images/hoidiffusion.png
 categories: research
 authors: "<strong>Mengqi Zhang</strong>, Yang Fu, Zheng Ding, Sifei Liu, Zhuowen Tu, Xiaolong Wang"
 venue: "Under conference review"
