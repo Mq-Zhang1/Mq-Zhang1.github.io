@@ -172,7 +172,7 @@
   </div>
 </section>
 
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
@@ -244,11 +244,11 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container is-max-widescreen">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -272,7 +272,7 @@
     <!--/ Abstract. -->
 
     
-    <!-- Paper video. -->
+    <!-- Paper video.
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
@@ -281,15 +281,15 @@
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <!--/ Paper video. -->
   </div>
 </section>
 
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container is-max-widescreen">
       <!-- Method. -->
-      <div class="columns is-centered has-text-centered">
+      <div class="columns is-centered">
           <div class="column is-full-width">
               <h2 class="title is-3">Approach</h2>
               <video id="dollyzoom" autoplay controls muted loop height="100%">
@@ -298,7 +298,7 @@
           </div>
       </div>
 
-      <div class="columns is-centered has-text-centered">
+      <div class="columns is-centered">
         <div class="column is-full-width">
             <h2 class="title is-3">Data Generation Pipeline</h2>
             <video id="dollyzoom" autoplay controls muted loop height="100%">
@@ -309,6 +309,60 @@
   </div>
 </section>
 
+<section class="hero is-small">
+  <div class="hero-body">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3">Results</h2>
+    <div class="columns">
+      <div class="column">
+        <p>
+          We show our generated hand-object interaction images, 
+          HOIDiffusion can control the synthesis with novel object
+          shapes and unseen texts.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="title is-4">Real-Style Image</h3>
+    <div class="columns">
+      <div class="column overlay-image">
+        <img src="static/images/real_image/2_bowl_s1082_0_0_9.jpg" class="src-image">
+        <img src="static/images/real_image/rgb_2_bowl_s1082_0_0_9.jpg" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/3_knife_s1082_0_0_6.jpg" class="src-image">
+        <img src="static/images/real_image/rgb_3_knife_s1082_0_0_6.jpg" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/6_bowl_s1082_0_1_9.jpg" class="src-image">
+        <img src="static/images/real_image/rgb_6_bowl_s1082_0_1_9.jpg" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/glass_our.jpg" class="src-image">
+        <img src="fstatic/images/real_image/glass.png" class="dst-image">
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column overlay-image">
+        <img src="static/images/real_image/mug1_our.jpg" class="src-image">
+        <img src="static/images/real_image/mug1.png" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/rot_can_s111_0_0_8.jpg" class="src-image">
+        <img src="static/images/real_image/rgb_rot_can_s111_0_0_8.jpg" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/mug2_our.jpg" class="src-image">
+        <img src="static/images/real_image/mug2.png" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/rot_mug_s140_0_2_9.jpg" class="src-image">
+        <img src="fstatic/images/real_image/rgb_rot_can_s111_0_0_8" class="dst-image">
+      </div>
+    </div>
+  </div>
+  </div>
+</section>    
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -329,25 +383,7 @@
           </video>
         </div>
       </div>
-      <!--/ Visual Effects. -->
 
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
     </div>
     <!--/ Matting. -->
 
