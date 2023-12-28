@@ -32,7 +32,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+  <link rel="icon" href="./static/images/favicon.svg">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -128,9 +128,6 @@
             <span class="author-block"><sup>1</sup>University of California, San Diego</span>
             <span class="author-block"><sup>2</sup>NVIDIA</span>
           </div>
-          <div class="is-size-6 publication-authors">
-            <span class="author-block">(* equal contribution)</span>
-          </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
@@ -194,13 +191,14 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="static/images/teaser.pdf" alt="">
-      <h2 class="subtitle has-text-justified" style="font-size:17px;">
-        HOIDiffusion generates high quality hand-object
-        interaction images conditioned on physical structures 
-        and detailed text description. The model disentangles 
-        the geometry from appearance,
-        exhibiting high generation diversity.   
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
       </h2>
     </div>
   </div>
@@ -265,14 +263,13 @@
 </section> -->
 
 
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
+<section class="section">
+  <div class="container is-max-desktop">
     <!-- Abstract. -->
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">Abstract</h2>
-        <div class="content has-text-justified" style="font-size:18px;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
           <p>
             3D hand-object interaction data is scarce due to the hardware constraints in scaling up 
             the data collection process. In this paper, we propose HOIDiffusion for generating realistic 
@@ -288,7 +285,6 @@
         </div>
       </div>
     </div>
-  </div>
     <!--/ Abstract. -->
 
     
@@ -315,25 +311,18 @@
               <p> We inject three conditional encoders into the stable diffusion model. We utilize both the HOI datasets and
                 high-quality background images to train HOIDiffusion. The background images are synthesized using the scenery prompts from pretrained model. The texts sent
                 to the model are output by LLaVA for detailed description. </p>
-              </br>  
-
-              <img src="static/images/main_model.pdf" alt="">
+              <video id="dollyzoom" autoplay muted loop height="100%">
+                  <source src="static/videos/method.mp4" type="video/mp4">
+              </video>
           </div>
       </div>
-    </div>
-</section>
 
-<section class="section">
-  <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column is-full-width">
             <h2 class="title is-3">Data Generation Pipeline</h2>
-            <p> We propose a two-stage pipeline to synthesize hand-object-interaction data. During the first stage, we utilize a
-              pretrained GrabNet to output 3D hand poses given by a single object model. Then in the second stage, we use those 3D hand poses along
-              with segmentation maps, normal maps and skeletons to conditionally generate high-quality HOI data. </p>
-            </br> 
-
-            <img src="static/images/pipeline.pdf" alt="">
+            <video id="dollyzoom" autoplay controls muted loop height="100%">
+                <source src="static/videos/pipeline.mp4" type="video/mp4">
+            </video>
         </div>
     </div>
   </div>
@@ -342,10 +331,18 @@
 <section class="hero is-small">
   <div class="hero-body">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Real-Style Image Generation</h2>
-    <p> Generated images with the same background description but different object shapes, poses, and hand skeletons. HOIDiffusion could generate more realistic images similar to
-      the style in training datasets. </p>
-    </br> 
+    <h2 class="title is-3">Results</h2>
+    <div class="columns">
+      <div class="column">
+        <p>
+          We show our generated hand-object interaction images, 
+          HOIDiffusion can control the synthesis with novel object
+          shapes and unseen texts.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="title is-4">Real-Style Image</h3>
     <div class="columns">
       <div class="column overlay-image">
         <img src="static/images/real_image/bottle1.jpg" class="src-image">
@@ -383,318 +380,162 @@
         <img src="static/images/real_image/glass_rgb.png" class="dst-image">
       </div>
     </div>
-</section>
 
-<section class="hero is-small">
-  <div class="hero-body">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Object Appearance Control</h2>
-    <p>We explore the ability of HOIDiffusion to control the appearance of objects, with different colors or styles unseen in training data.</p>
-    </br>
-    <h3 class="has-text-centered" style="font-size:18px;margin-top: -20px"> A hand is grasping a <strong>pink</strong> [object]</h3>
-    <div class="columns">
-      <div class="column has-text-centered">
-        <video autoplay muted loop playsinline height="100%">
-          <source src="static/videos/appearance/pink1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/pink2.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/pink3.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/pink4.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-
-    <h3 class="has-text-centered" style="font-size:18px; margin-top: -20px"> A hand is grasping a <strong>Gothic-style</strong> [object]</h3>
-    <div class="columns">
-      <div class="column has-text-centered">
-        <video autoplay muted loop playsinline height="100%">
-          <source src="static/videos/appearance/gothic1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/gothic2.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/gothic3.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/gothic4.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-
-    <h3 class="has-text-centered" style="font-size:18px;margin-top: -20px"> A hand is grasping a <strong>metallic</strong> [object]</h3>
-    <div class="columns">
-      <div class="column has-text-centered">
-        <video autoplay muted loop playsinline height="100%">
-          <source src="static/videos/appearance/metal1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/metal2.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/metal3.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/metal4.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-
-    <h3 class="has-text-centered" style="font-size:18px;margin-top: -20px"> A hand is grasping a <strong>Medieval-style</strong> [object]</h3>
-    <div class="columns">
-      <div class="column has-text-centered">
-        <video autoplay muted loop playsinline height="100%">
-          <source src="static/videos/appearance/mediaval1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/mediaval2.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/mediaval3.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/appearance/mediaval4.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-
-    <!-- <div class="columns is-centered">
-      <h6 class="has-text-centered">Pink</h6>
+    <h3 class="title is-4">Object Appearance Control</h3>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+          <div class="columns is-centered">
               <div class="column has-text-centered">
-                <video autoplay muted loop playsinline height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/pink1.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop playsinline height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/gothic1.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/metal1.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/mediaval1.mp4" type="video/mp4">
                 </video>
               </div>
               <div class="column has-text-centered">
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/pink2.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/gothic2.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/metal2.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/mediaval2.mp4" type="video/mp4">
                 </video>
               </div>
               <div class="column has-text-centered">
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/pink3.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/gothic3.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/metal3.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/mediaval3.mp4" type="video/mp4">
                 </video>
               </div>
               <div class="column has-text-centered">
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/pink4.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/gothic4.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/metal4.mp4" type="video/mp4">
                 </video>
-                <video autoplay muted loop height="100%">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
                   <source src="static/videos/appearance/mediaval4.mp4" type="video/mp4">
                 </video>
               </div>
-    </div> -->
-  
-
-    <h2 class="title is-3">Background Control</h2>
-    <p>We present generated hand-object-interaction images with diverse background prompts, from everyday scenarios to special contexts.</p>
-    </br>
-    <div class="columns" style="margin-bottom: -20px">
-      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In the sand</h3></div>
-      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In the snow</h3></div>
-    </div>
-    <div class="columns">
-      <div class="column has-text-centered">
-        <video autoplay muted loop playsinline height="100%">
-          <source src="static/videos/background/sand1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/sand2.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/snow1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/snow2.mp4" type="video/mp4">
-        </video>
+          </div>
       </div>
     </div>
 
-    <div class="columns" style="margin-bottom: -20px">
-      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> Floating in the sea</h3></div>
-      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In neon-lit cyberpunk nightclub</h3></div>
-    </div>
-    <div class="columns">
-      <div class="column has-text-centered">
-        <video autoplay muted loop playsinline height="100%">
-          <source src="static/videos/background/sea1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/sea2.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/neo1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/neo2.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-
-    <div class="columns" style="margin-bottom: -20px">
-      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In the underwater city of Atlantis</h3></div>
-      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In an alien city on a distant planet</h3></div>
-    </div>
-    <div class="columns">
-      <div class="column has-text-centered">
-        <video autoplay muted loop playsinline height="100%">
-          <source src="static/videos/background/atlantic1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/atlantic2.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/alien1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/alien2.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-
-    <div class="columns" style="margin-bottom: -20px">
-      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In the Grand Canyon</h3></div>
-      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In a Japanese rock garden</h3></div>
-    </div>
-    <div class="columns">
-      <div class="column has-text-centered">
-        <video autoplay muted loop playsinline height="100%">
-          <source src="static/videos/background/grand1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/grand3.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/japan1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/background/japan3.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-
-
-    <h2 class="title is-3">Trajectory Video</h2>
-    <p>We leverage zero-shot video generation techniques in the diffusion 
-      model to establish inter-consistency among frames. Therefore we could 
-      obtain video format data of a complete fetching process to the object.</p>
-    </br>
-    
-    <div class="columns">
-      <div class="column has-text-centered">
-        <img src="static/images/bowl_input.gif" alt="">
-      </div>
-      <div class="column has-text-centered">
-        <img src="static/images/bowl.gif" alt="">
-      </div>
-      <div class="column has-text-centered">
-        <img src="static/images/mug_input.gif" alt="">
-      </div>
-      <div class="column has-text-centered">
-        <img src="static/images/mug.gif" alt="">
+    <h3 class="title is-4">Background Control</h3>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+          <div class="columns is-centered">
+              <div class="column has-text-centered">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/sand1.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/sea1.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/atlantic1.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/grand1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column has-text-centered">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/sand2.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/sea2.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/atlantic2.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/grand2.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column has-text-centered">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/sand3.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/sea3.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/atlantic3.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/grand3.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column has-text-centered">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/snow1.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/neo1.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/alien1.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/japan1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column has-text-centered">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/snow2.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/neo2.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/alien2.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/japan2.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column has-text-centered">
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/snow3.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/neo3.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/alien3.mp4" type="video/mp4">
+                </video>
+                <video id="dollyzoom" autoplay controls muted loop height="100%">
+                  <source src="static/videos/background/japan3.mp4" type="video/mp4">
+                </video>
+              </div>
+          </div>
       </div>
     </div>
-
-    <h2 class="title is-3">6D Object Pose Estimation</h2>
-    <p>We explore the potential for improving categorical object 6D pose estimation 
-      task with our generated HOI data, anticipating the reality brought by
-      our data could help enhance model performance.</p>
-    </br>
-    
-    <div class="columns">
-      <div class="column has-text-centered">
-        <video autoplay muted loop height="100%">
-          <source src="static/videos/object_pose.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-
 </section>  
  
 
@@ -818,25 +659,45 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <!-- <pre><code>@article{park2021nerfies,
+    <pre><code>@article{park2021nerfies,
   author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
   title     = {Nerfies: Deformable Neural Radiance Fields},
   journal   = {ICCV},
   year      = {2021},
-}</code></pre> -->
+}</code></pre>
   </div>
 </section>
 
 
 <footer class="footer">
   <div class="container">
-      <div class="columns is-centered">
-          <div class="content">
-              <p>
-                  The template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
-              </p>
-          </div>
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
       </div>
+    </div>
   </div>
 </footer>
 
