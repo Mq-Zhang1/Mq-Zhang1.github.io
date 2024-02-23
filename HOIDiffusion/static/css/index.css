@@ -63,7 +63,7 @@ body {
 
 .publication-awards {
     color: #ff3860;
-    width: fit-content;
+    /* width: fit-content; */
     font-weight: bolder;
 }
 
@@ -155,3 +155,4 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+

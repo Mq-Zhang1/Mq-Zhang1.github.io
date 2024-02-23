@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="HOIDiffusion: Generating Realistic 3D Hand-Object Interaction Data">
+  <meta name="keywords" content="HOIDiffusion, Diffusion, HOI, hand-object-interaction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HOIDiffusion: Generating Realistic 3D Hand-Object Interaction Data</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+
+    .src-image{
+      margin-bottom: -10%;
+    }
+    .dst-image {
+      margin-top: -95%;
+      opacity: 0;
+      transition: 1s ease;
+    }
+    
+    .overlay-image:hover .dst-image {
+      opacity: 1;
+    }
+    
+    </style>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <!-- <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a> -->
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">HOIDiffusion: Generating Realistic 3D Hand-Object Interaction Data</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Mengqi Zhang<sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://oasisyang.github.io/">Yang Fu</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              Zheng Ding<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://research.nvidia.com/person/sifei-liu">Sifei Liu</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://pages.ucsd.edu/~ztu/">Zhuowen Tu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://xiaolonw.github.io/">Xiaolong Wang</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of California, San Diego</span>
+            <span class="author-block"><sup>2</sup>NVIDIA</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">(* equal contribution)</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/zwwuHkytOn8"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video autoplay muted loop playsinline height="100%">
+        <source src="static/images/teaser_video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-body">
+      <img src="static/images/teaser.pdf" alt="">
+      <h2 class="subtitle has-text-justified" style="font-size:17px;">
+        HOIDiffusion generates high quality hand-object
+        interaction images conditioned on physical structures 
+        and detailed text description. The model disentangles 
+        the geometry from appearance,
+        exhibiting high generation diversity.   
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+    <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <div class="content has-text-justified" style="font-size:18px;">
+          <p>
+            3D hand-object interaction data is scarce due to the hardware constraints in scaling up 
+            the data collection process. In this paper, we propose HOIDiffusion for generating realistic 
+            and diverse 3D hand-object interaction data. Our model is a conditional diffusion model that 
+            takes both the 3D hand-object geometric structure and text description as inputs for image 
+            synthesis. This offers a more controllable and realistic synthesis as we can specify the 
+            structure and style inputs in a disentangled manner. HOIDiffusion is trained by leveraging a 
+            diffusion model pre-trained on large-scale natural images and a few 3D human demonstrations. 
+            Beyond controllable image synthesis, we adopt the generated 3D data for learning 6D object pose 
+            estimation and show its effectiveness in improving perception systems.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-3">Video</h2>
+      <div class="publication-video">
+        <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/zwwuHkytOn8?si=k_vrocafeJahjVHW"  
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
+    </div>
+  </div>
+</div>
+    <!--/ Abstract. -->
+
+    
+    <!-- Paper video.
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+      <!-- Method. -->
+      <div class="columns is-centered">
+          <div class="column is-full-width">
+              <h2 class="title is-3">Approach</h2>
+              <p> We inject three conditional encoders into the stable diffusion model. We utilize both the HOI datasets and
+                high-quality background images to train HOIDiffusion. The background images are synthesized using the scenery prompts from pretrained model. The texts sent
+                to the model are output by LLaVA for detailed description. </p>
+              </br>  
+
+              <img src="static/images/main_model.pdf" alt="">
+          </div>
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+            <h2 class="title is-3">Data Generation Pipeline</h2>
+            <p> We propose a two-stage pipeline to synthesize hand-object-interaction data. During the first stage, we utilize a
+              pretrained GrabNet to output 3D hand poses given by a single object model. Then in the second stage, we use those 3D hand poses along
+              with segmentation maps, normal maps and skeletons to conditionally generate high-quality HOI data. </p>
+            </br> 
+
+            <img src="static/images/pipeline.pdf" alt="">
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Real-Style Image Generation</h2>
+    <p> Generated images with the same background description but different object shapes, poses, and hand skeletons. HOIDiffusion could generate more realistic images similar to
+      the style in training datasets. </p>
+    </br> 
+    <div class="columns">
+      <div class="column overlay-image">
+        <img src="static/images/real_image/bottle1.jpg" class="src-image">
+        <img src="static/images/real_image/bottle1_rgb.png" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/bowl.jpg" class="src-image">
+        <img src="static/images/real_image/bowl_rgb.png" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/mug1.jpg" class="src-image">
+        <img src="static/images/real_image/mug1_rgb.png" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/mug2.jpg" class="src-image">
+        <img src="static/images/real_image/mug2_rgb.png" class="dst-image">
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column overlay-image">
+        <img src="static/images/real_image/can1.jpg" class="src-image">
+        <img src="static/images/real_image/can1_rgb.png" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/can2.jpg" class="src-image">
+        <img src="static/images/real_image/can2_rgb.png" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/mug3.jpg" class="src-image">
+        <img src="static/images/real_image/mug3_rgb.png" class="dst-image">
+      </div>
+      <div class="column overlay-image">
+        <img src="static/images/real_image/glass.jpg" class="src-image">
+        <img src="static/images/real_image/glass_rgb.png" class="dst-image">
+      </div>
+    </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Object Appearance Control</h2>
+    <p>We explore the ability of HOIDiffusion to control the appearance of objects, with different colors or styles unseen in training data.</p>
+    </br>
+    <h3 class="has-text-centered" style="font-size:18px;margin-top: -20px"> A hand is grasping a <strong>pink</strong> [object]</h3>
+    <div class="columns">
+      <div class="column has-text-centered">
+        <video autoplay muted loop playsinline height="100%">
+          <source src="static/videos/appearance/pink1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/pink2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/pink3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/pink4.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <h3 class="has-text-centered" style="font-size:18px; margin-top: -20px"> A hand is grasping a <strong>Gothic-style</strong> [object]</h3>
+    <div class="columns">
+      <div class="column has-text-centered">
+        <video autoplay muted loop playsinline height="100%">
+          <source src="static/videos/appearance/gothic1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/gothic2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/gothic3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/gothic4.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <h3 class="has-text-centered" style="font-size:18px;margin-top: -20px"> A hand is grasping a <strong>metallic</strong> [object]</h3>
+    <div class="columns">
+      <div class="column has-text-centered">
+        <video autoplay muted loop playsinline height="100%">
+          <source src="static/videos/appearance/metal1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/metal2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/metal3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/metal4.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <h3 class="has-text-centered" style="font-size:18px;margin-top: -20px"> A hand is grasping a <strong>Medieval-style</strong> [object]</h3>
+    <div class="columns">
+      <div class="column has-text-centered">
+        <video autoplay muted loop playsinline height="100%">
+          <source src="static/videos/appearance/mediaval1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/mediaval2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/mediaval3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/appearance/mediaval4.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- <div class="columns is-centered">
+      <h6 class="has-text-centered">Pink</h6>
+              <div class="column has-text-centered">
+                <video autoplay muted loop playsinline height="100%">
+                  <source src="static/videos/appearance/pink1.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop playsinline height="100%">
+                  <source src="static/videos/appearance/gothic1.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/metal1.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/mediaval1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column has-text-centered">
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/pink2.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/gothic2.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/metal2.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/mediaval2.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column has-text-centered">
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/pink3.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/gothic3.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/metal3.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/mediaval3.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column has-text-centered">
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/pink4.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/gothic4.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/metal4.mp4" type="video/mp4">
+                </video>
+                <video autoplay muted loop height="100%">
+                  <source src="static/videos/appearance/mediaval4.mp4" type="video/mp4">
+                </video>
+              </div>
+    </div> -->
+  
+
+    <h2 class="title is-3">Background Control</h2>
+    <p>We present generated hand-object-interaction images with diverse background prompts, from everyday scenarios to special contexts.</p>
+    </br>
+    <div class="columns" style="margin-bottom: -20px">
+      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In the sand</h3></div>
+      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In the snow</h3></div>
+    </div>
+    <div class="columns">
+      <div class="column has-text-centered">
+        <video autoplay muted loop playsinline height="100%">
+          <source src="static/videos/background/sand1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/sand2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/snow1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/snow2.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="columns" style="margin-bottom: -20px">
+      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> Floating in the sea</h3></div>
+      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In neon-lit cyberpunk nightclub</h3></div>
+    </div>
+    <div class="columns">
+      <div class="column has-text-centered">
+        <video autoplay muted loop playsinline height="100%">
+          <source src="static/videos/background/sea1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/sea2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/neo1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/neo2.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="columns" style="margin-bottom: -20px">
+      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In the underwater city of Atlantis</h3></div>
+      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In an alien city on a distant planet</h3></div>
+    </div>
+    <div class="columns">
+      <div class="column has-text-centered">
+        <video autoplay muted loop playsinline height="100%">
+          <source src="static/videos/background/atlantic1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/atlantic2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/alien1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/alien2.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="columns" style="margin-bottom: -20px">
+      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In the Grand Canyon</h3></div>
+      <div class="column has-text-centered"><h3 class="has-text-centered" style="font-size:18px;margin-top: -20px;margin-bottom: -5px"> In a Japanese rock garden</h3></div>
+    </div>
+    <div class="columns">
+      <div class="column has-text-centered">
+        <video autoplay muted loop playsinline height="100%">
+          <source src="static/videos/background/grand1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/grand3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/japan1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/background/japan3.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+
+    <h2 class="title is-3">Trajectory Video</h2>
+    <p>We leverage zero-shot video generation techniques in the diffusion 
+      model to establish inter-consistency among frames. Therefore we could 
+      obtain video format data of a complete fetching process to the object.</p>
+    </br>
+    
+    <div class="columns">
+      <div class="column has-text-centered">
+        <img src="static/images/bowl_input.gif" alt="">
+      </div>
+      <div class="column has-text-centered">
+        <img src="static/images/bowl.gif" alt="">
+      </div>
+      <div class="column has-text-centered">
+        <img src="static/images/mug_input.gif" alt="">
+      </div>
+      <div class="column has-text-centered">
+        <img src="static/images/mug.gif" alt="">
+      </div>
+    </div>
+
+    <h2 class="title is-3">6D Object Pose Estimation</h2>
+    <p>We explore the potential for improving categorical object 6D pose estimation 
+      task with our generated HOI data, anticipating the reality brought by
+      our data could help enhance model performance.</p>
+    </br>
+    
+    <div class="columns">
+      <div class="column has-text-centered">
+        <video autoplay muted loop height="100%">
+          <source src="static/videos/object_pose.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+</section>  
+ 
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Visual Effects</h2>
+          <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dollyzoom-stacked.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+    </div>
+    
+
+    
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Animation</h2>
+
+        
+        <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/>
+       
+
+        
+        <h3 class="title is-4">Re-rendering the input video</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        
+
+      </div>
+    </div>
+
+
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section> -->
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <!-- <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre> -->
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+      <div class="columns is-centered">
+          <div class="content">
+              <p>
+                  The template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+              </p>
+          </div>
+      </div>
+  </div>
+</footer>
+
+</body>
+</html>
