@@ -8,5 +8,6 @@ authors: "Zheng Ding*, <strong>Mengqi Zhang*</strong>, Jiajun Wu, and Zhuowen Tu
 venue: "ICLR 2024"
 arxiv: https://arxiv.org/abs/2308.01316
 code: https://github.com/mlpc-ucsd/Patch-DM
+website: https://patchdm.github.io
 ---
 We propose an effective denoising diffusion model for generating high-resolution images (e.g., 1024×512), trained on small-size image patches (e.g., 64×64).
