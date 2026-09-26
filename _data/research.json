@@ -21,7 +21,7 @@
     },
     {
       "date": "2026.05",
-      "text": "<span aria-hidden=\"true\">🎉</span> <a href=\"https://openreview.net/forum?id=hyB6UchStf\">SPOT</a> accepted to CVPR 2026 workshops: MUSI &amp; Visual Concepts."
+      "text": "<span aria-hidden=\"true\">🎉</span> <a href=\"/files/SPOT.pdf\">SPOT</a> accepted to CVPR 2026 workshops: MUSI &amp; Visual Concepts."
     },
     {
       "date": "2026.01",
@@ -104,15 +104,11 @@
       "image": "/images/spot.png",
       "image_alt": "SPOT predicting spatial and semantic relationships between objects",
       "summary": "Spatially and semantically grounded scene graphs with open-source VLMs, including cross-domain generalization and zero-shot 3D transfer.",
-      "url": "https://openreview.net/forum?id=hyB6UchStf",
+      "url": "/files/SPOT.pdf",
       "links": [
         {
           "name": "paper",
-          "url": "https://openreview.net/pdf?id=hyB6UchStf"
-        },
-        {
-          "name": "OpenReview",
-          "url": "https://openreview.net/forum?id=hyB6UchStf"
+          "url": "/files/SPOT.pdf"
         }
       ]
     },
