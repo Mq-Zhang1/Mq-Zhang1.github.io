@@ -1,0 +1,26 @@
+<div class="paper-list">
+{% for paper in site.data.research.papers %}
+  <article class="paper" id="{{ paper.id }}" data-topic="{{ paper.topic }}">
+    <div class="paper-visual">
+      <a class="paper-image" href="{{ paper.url }}" aria-label="View {{ paper.title | escape }}">
+        <img src="{{ paper.image | relative_url }}" alt="{{ paper.image_alt | escape }}" loading="lazy" width="220" height="150">
+      </a>
+      {% if paper.video %}
+      <button class="demo-trigger" type="button" data-video="{{ paper.video | relative_url }}" aria-label="Play DeVA robot demo" hidden><span aria-hidden="true">▷</span> Robot demo</button>
+      {% endif %}
+    </div>
+    <div class="paper-body">
+      <p class="paper-venue">{{ paper.venue }}{% if paper.honor %} <span class="honor">{{ paper.honor }}</span>{% endif %}</p>
+      <h3><a href="{{ paper.url }}">{{ paper.title }}</a></h3>
+      <p class="paper-authors">{{ paper.authors }}</p>
+      <div class="paper-links">{% for link in paper.links %}<a href="{{ link.url }}">{{ link.name }}</a>{% unless forloop.last %}<span aria-hidden="true">·</span>{% endunless %}{% endfor %}<button class="tldr-toggle" type="button" aria-expanded="true" aria-controls="{{ paper.id }}-summary" hidden>TL;DR <span aria-hidden="true">▸</span></button></div>
+      <p class="paper-summary" id="{{ paper.id }}-summary">{{ paper.summary }}</p>
+    </div>
+  </article>
+{% endfor %}
+</div>
+<dialog class="demo-dialog" aria-labelledby="demo-title">
+  <div class="dialog-heading"><h2 id="demo-title">DeVA · Bimanual manipulation</h2><button type="button" class="dialog-close" aria-label="Close robot demo">×</button></div>
+  <video controls playsinline preload="none" aria-label="DeVA robot handover demonstration"></video>
+  <p><a href="https://deva-model.github.io/">Explore all robot demonstrations ↗</a></p>
+</dialog>

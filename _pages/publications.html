@@ -1,19 +1,13 @@
 ---
-layout: archive
-title: "Publications"
+layout: academic
 permalink: /publications/
-author_profile: true
+title: Publications
+page_kind: publications
+author_profile: false
 ---
-
-{% if author.googlescholar %}
-  You can also find my articles on <u><a href="{{author.googlescholar}}">my Google Scholar profile</a>.</u>
-{% endif %}
-
-{% include base_path %}
-
-{% for post in site.publications reversed %}
-  {% include archive-single.html %}
-{% endfor %}
-
-
-
+<header class="page-heading"><h1>Publications</h1><a href="{{ site.data.research.scholar }}">Google Scholar ↗</a></header>
+<div class="paper-filters" aria-label="Filter publications by topic" hidden>
+<button type="button" data-filter="all" aria-pressed="true">All research</button><button type="button" data-filter="world" aria-pressed="false">World models &amp; robotics</button><button type="button" data-filter="3d" aria-pressed="false">3D vision</button><button type="button" data-filter="generation" aria-pressed="false">Image generation</button>
+</div>
+<p class="section-note"><span id="paper-count" aria-live="polite">{{ site.data.research.papers | size }} publications</span> · * Equal contribution.</p>
+{% include academic-papers.html %}

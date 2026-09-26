@@ -1,0 +1,12 @@
+<div class="experience-list">
+{% for item in site.data.research.experience %}
+  <article class="experience-row employer-row">
+    <div class="employer-logo">{% include academic-employer-logo.html %}</div>
+    <div class="experience-copy">
+      <div class="experience-heading"><h3>{{ item.name }}</h3><span class="date">{{ item.date }}</span></div>
+      <p class="role">{{ item.role }}</p>
+      <p>{{ item.description }}</p>
+    </div>
+  </article>
+{% endfor %}
+</div>

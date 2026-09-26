@@ -1,29 +1,49 @@
 ---
+layout: academic
 permalink: /
-title: "Mengqi Zhang"
-author_profile: true
-redirect_from: 
+title: Mengqi Zhang
+page_kind: home
+author_profile: false
+redirect_from:
   - /about/
   - /about.html
 ---
-I am currently a second-year PhD student in Computer Science at UC Irvine, where I am honored to be advised by [Prof. 
-Judy Hoffman](https://jhoffman.github.io/). Before that, I started my PhD with Prof. Hoffman at Georgia Tech. I obtained my M.S. in Electrical and Computer Engineering at UC San Diego in 2023, supervised by [Prof.Zhuowen Tu](https://pages.ucsd.edu/~ztu/) and [Prof. Xiaolong Wang](https://xiaolonw.github.io). I received my B.E. from Zhejiang University in 2021.
-
-I am broadly interested in computer vision problems, expecially generative models, 3D vision, and multi-modality.
-
-<h1 class="page__title">News</h1>
-
-- \[2026.01\] Transferred to UC Irvine to continue my Ph.D.
-- \[2025.05\] Started my first intenrship at Amazon.
-- \[2024.08\] Joined Georgia Tech for Ph.D under the supervision of [Prof. Judy Hoffman](https://faculty.cc.gatech.edu/~judy/).
-- \[2024.02\] [HOIDiffusion: Generating Realistic 3D Hand-Object Interaction Data](https://github.com/Mq-Zhang1/HOIDiffusion) is accepted to CVPR 2024.
-- \[2024.01\] [Patched Denoising Diffusion Models For High-Resolution Image Synthesis](https://patchdm.github.io) is accepted to ICLR 2024.
-
-<h1 class="page__title">Publications</h1>
-
-{% for post in site.publications reversed %}
-{% include archive-single.html %}
-{% endfor %}
-
-
-
+<section class="hero" aria-labelledby="profile-name">
+  <div class="hero-photo"><img src="{{ '/images/mengqi_profile.jpg' | relative_url }}" width="240" height="300" alt="Mengqi Zhang outdoors in the mountains" fetchpriority="high"></div>
+  <div class="hero-copy">
+    <h1 id="profile-name">{{ site.data.research.name }}</h1>
+    <p class="hero-role">{{ site.data.research.role }}</p>
+    <p>I am a Ph.D. student at <a href="https://www.uci.edu/">UC Irvine</a>, advised by <a href="https://jhoffman.github.io/">Judy Hoffman</a>. I began my Ph.D. at Georgia Tech and previously studied at UC San Diego and Zhejiang University.</p>
+    <p class="research-intro">{{ site.data.research.interests }}</p>
+    <!-- Icons from the existing Font Awesome and Academicons assets in assets/fonts/. -->
+    <ul class="contact-links" aria-label="Contact and profiles">
+      <li><a href="mailto:{{ site.data.research.email }}"><svg class="contact-icon" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><path transform="translate(0 448) scale(1 -1)" d="M502.3 257.2C506.2 260.3 512 257.4 512 252.5V48C512 21.5 490.5 0 464 0H48C21.5 0 0 21.5 0 48V252.4C0 257.4 5.7 260.2000000000001 9.7 257.1C32.1 239.7 61.8 217.6 163.8 143.5C184.9 128.1 220.5 95.7 256 95.9C291.7 95.6 328 128.7 348.3 143.5C450.3 217.6 479.9 239.8 502.3 257.2zM256 128C279.2 127.6 312.6 157.2 329.4 169.4C462.1 265.7 472.2 274.1 502.8 298.1C508.6 302.6 511.9999999999999 309.6 511.9999999999999 317V336C511.9999999999999 362.5 490.4999999999999 384 463.9999999999999 384H48C21.5 384 0 362.5 0 336V317C0 309.6 3.4 302.7 9.2 298.1C39.8 274.2 49.9 265.7 182.6 169.4C199.4 157.2 232.8 127.6 256 128z"/></svg><span>Email</span></a></li>
+      <li><a href="{{ site.data.research.scholar }}"><svg class="contact-icon" viewBox="0 0 2048 2048" fill="currentColor" aria-hidden="true" focusable="false"><path transform="translate(0 1755.136) scale(1 -1)" d="M1624.144 1414.115v124.49l90.354 70.538h-977.782l-590.432-513.25h391.57c-0.71-9.714-1.002-18.498-1.002-28.46 0-95.29 33.002-174.11 99.072-237.078 66.070-63.072 147.434-94.39 243.778-94.39 22.506 0 44.574 1.682 66.004 4.682-13.29-29.718-19.998-57.248-19.998-82.936 0-45.144 20.568-93.396 61.564-144.648-179.354-12.208-311.136-44.492-395.14-96.746-48.142-29.71-86.858-67.218-116.070-112.142-29.214-45.254-43.784-93.784-43.784-146.11 0-44.106 9.428-83.822 28.43-119.142s43.784-64.322 74.57-86.784c30.712-22.71 66.144-41.604 106.144-57 39.928-15.286 79.572-26.142 119.136-32.286 39.438-6.136 78.65-9.136 117.512-9.136 61.572 0 123.216 7.928 185.358 23.712 61.996 15.93 120.138 39.504 174.496 70.824 54.214 31.108 98.356 73.538 132.214 126.712 33.784 53.394 50.718 113.394 50.718 179.822 0 50.358-10.284 96.176-30.858 137.786-20.428 41.472-45.43 75.616-75.212 102.144-29.718 26.572-59.428 50.996-89.212 72.996-29.718 22.148-54.858 44.574-75.286 67.716-20.502 23.070-30.786 45.962-30.786 68.498 0 22.498 7.928 44.214 23.844 65.214 15.792 21.072 35.080 41.362 57.644 60.826 22.572 19.426 45.144 40.996 67.642 64.608 22.498 23.53 41.786 54.068 57.644 91.466 15.93 37.39 23.786 79.748 23.786 126.888 0 61.498-11.644 111.82-34.502 152.29-2.714 4.674-5.566 8.244-8.572 13.816l260.148 213.358v-78.256c-33.8-4.25-30.282-24.438-30.282-48.618v-588.192c0-27.238 22.286-49.526 49.526-49.526h18.234c27.238 0 49.526 22.286 49.526 49.526v588.192c0 24.122 3.554 44.288-29.996 48.596zM1133.356 397.071c5.216-3.43 16.932-12.712 35.284-27.604 18.512-14.826 31.072-26.038 37.786-33.894 6.576-7.606 16.362-19.040 29.148-34.502 12.858-15.426 21.57-28.818 26.142-39.928 4.572-11.322 9.216-24.964 13.926-40.894 4.506-15.748 6.788-31.89 6.788-48.282 0-77.934-30.004-135.68-89.856-173.070-60-37.398-131.504-56.108-214.572-56.108-41.998 0-83.214 4.996-123.714 14.606-40.426 9.676-79.14 24.394-116.070 43.894-36.93 19.464-66.64 46.644-89.146 81.356-22.572 34.926-33.858 75.038-33.858 119.998 0 47.178 12.786 88.182 38.502 122.998 25.57 34.86 59.144 61.22 100.718 79.156 41.428 18.038 83.426 30.822 125.996 38.392 42.57 7.782 85.928 11.68 130.004 11.68 20.428 0 36.278-1.148 47.564-3.182 2.078-1.002 13.86-9.464 35.358-25.432 21.504-15.828 34.86-25.578 40.002-29.184zM1118.004 856.855c-33.858-40.5-81.072-60.746-141.502-60.746-54.214 0-101.932 21.782-142.928 65.426-41.142 43.534-70.502 92.928-88.43 148.254-18 55.354-26.998 109.642-26.998 162.962 0 62.602 16.436 115.894 49.284 159.89 32.856 44.112 79.996 66.216 141.43 66.216 54.286 0 102.282-23.032 143.712-69.288 41.574-46.102 71.358-97.888 89.22-155.282 17.928-57.322 26.85-112.136 26.85-164.498 0-61.47-16.926-112.502-50.636-152.934z"/></svg><span>Google Scholar</span></a></li>
+      <li><a href="{{ site.data.research.github }}"><svg class="contact-icon" viewBox="0 0 496 512" fill="currentColor" aria-hidden="true" focusable="false"><path transform="translate(0 448) scale(1 -1)" d="M165.9 50.6C165.9 48.6 163.6 47 160.7 47C157.4 46.7 155.1 48.3 155.1 50.6C155.1 52.6 157.4 54.2 160.3 54.2C163.3 54.5000000000001 165.9 52.9 165.9 50.6zM134.8 55.1C134.1 53.1 136.1 50.8 139.1 50.2C141.7 49.2 144.7 50.2 145.3 52.2S144 56.5000000000001 141 57.4C138.4 58.1 135.5 57.1 134.8 55.1zM179 56.8C176.1 56.1 174.1 54.2 174.4 51.9C174.7 49.9 177.3 48.6 180.3 49.3C183.2 50 185.2 51.9 184.9 53.9C184.6 55.8 181.9 57.1 179 56.8zM244.8 440C106.1 440 0 334.7 0 196C0 85.1 69.8 -9.8 169.5 -43.2C182.3 -45.5 186.8 -37.6 186.8 -31.1C186.8 -24.9 186.5 9.3 186.5 30.3C186.5 30.3 116.5 15.3 101.8 60.1C101.8 60.1 90.4 89.2000000000001 74 96.7000000000001C74 96.7000000000001 51.1 112.4 75.6 112.1C75.6 112.1 100.5 110.1 114.2 86.3C136.1 47.7 172.8 58.8 187.1 65.4C189.4 81.4 195.9 92.5000000000001 203.1 99.1C147.2 105.3 90.8 113.4 90.8 209.6C90.8 237.1 98.4 250.9000000000001 114.4 268.5C111.8 275 103.3 301.8 117 336.4000000000001C137.9 342.9000000000001 186 309.4000000000001 186 309.4000000000001C206 315 227.5 317.9000000000001 248.8 317.9000000000001S291.6 315 311.6 309.4000000000001C311.6 309.4000000000001 359.7000000000001 343 380.6 336.4000000000001C394.3 301.7000000000001 385.8 275 383.2000000000001 268.5C399.2000000000001 250.8000000000001 409.0000000000001 237.0000000000001 409.0000000000001 209.6C409.0000000000001 113.1 350.1000000000001 105.4 294.2000000000001 99.1C303.4000000000001 91.2000000000001 311.2000000000001 76.2000000000001 311.2000000000001 52.7C311.2000000000001 19.0000000000001 310.9000000000001 -22.6999999999999 310.9000000000001 -30.9C310.9000000000001 -37.4 315.5000000000001 -45.3 328.2000000000001 -43C428.2 -9.8 496 85.1 496 196C496 334.7 383.5 440 244.8 440zM97.2 95.1C95.9 94.1 96.2 91.8 97.9 89.9C99.5 88.3 101.8 87.6 103.1 88.9C104.4 89.9 104.1 92.2000000000001 102.4 94.1C100.8 95.7000000000001 98.5 96.4 97.2 95.1zM86.4 103.2000000000001C85.7 101.9 86.7 100.3000000000001 88.7 99.3000000000001C90.3 98.3000000000001 92.3 98.6000000000001 93 100.0000000000001C93.7 101.3000000000001 92.7 102.9 90.7 103.9C88.7 104.5000000000001 87.1 104.2000000000001 86.4 103.2000000000001zM118.8 67.6C117.2 66.3 117.8 63.3 120.1 61.4C122.4 59.1 125.3 58.8 126.6 60.4C127.9 61.7000000000001 127.3 64.7000000000001 125.3 66.6C123.1 68.9 120.1 69.2000000000001 118.8 67.6zM107.4 82.3C105.8 81.3 105.8 78.7 107.4 76.4C109 74.1 111.7 73.1 113 74.1C114.6 75.4 114.6 78 113 80.3C111.6 82.6 109 83.6 107.4 82.3z"/></svg><span>GitHub</span></a></li>
+      <li><a href="{{ site.data.research.linkedin }}"><svg class="contact-icon" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true" focusable="false"><path transform="translate(0 448) scale(1 -1)" d="M416 416H31.9C14.3 416 0 401.5 0 383.7V0.3C0 -17.5 14.3 -32 31.9 -32H416C433.6 -32 448 -17.5 448 0.3V383.7C448 401.5 433.6 416 416 416zM135.4 32H69V245.8H135.5V32zM102.2 275C80.9 275 63.7 292.3 63.7 313.5S80.9 352 102.2 352C123.4 352 140.7 334.7 140.7 313.5C140.7 292.2 123.5 275 102.2 275zM384.3 32H317.9V136C317.9 160.8 317.4 192.7 283.4 192.7C248.8 192.7 243.5 165.7 243.5 137.8V32H177.1V245.8H240.8V216.6H241.7C250.6 233.4000000000001 272.3 251.1 304.6 251.1C371.8 251.1 384.3 206.8 384.3 149.2000000000001V32z"/></svg><span>LinkedIn</span></a></li>
+      <li><a href="{{ site.data.research.cv | relative_url }}"><svg class="contact-icon" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true" focusable="false"><path transform="translate(0 448) scale(1 -1)" d="M181.9 191.9C176.9 207.9 177 238.8 179.9 238.8C188.3 238.8 187.5 201.9 181.9 191.9zM180.2 144.7C172.5 124.5 162.9 101.4 151.8 82C170.1 89 190.8 99.2 214.7 103.9C202 113.5 189.8 127.3 180.2 144.7zM86.1 19.9C86.1 19.1 99.3 25.3 121 60.1C114.3 53.8 91.9 35.6 86.1 19.9zM248 288H384V-40C384 -53.3 373.3 -64 360 -64H24C10.7 -64 0 -53.3 0 -40V424C0 437.3 10.7 448 24 448H224V312C224 298.8 234.8 288 248 288zM240 116.2C220 128.4 206.7 145.2 197.3 170C201.8 188.5 208.9 216.6 203.5 234.2C198.8 263.6 161.1 260.7 155.7 241C150.7 222.7 155.3 196.9 163.8 164C152.2 136.4 135.1 99.4 123 78.2C122.9 78.2 122.9 78.1 122.8 78.1C95.7 64.2 49.2 33.6 68.3 10.1C73.9 3.2 84.3 0.1 89.8 0.1C107.7 0.1 125.5 18.1 150.9 61.9C176.7 70.4 205 81 229.9 85.1C251.6 73.3 277 65.6 293.9 65.6C323.1 65.6 325.1 97.6 313.6 108.9999999999999C299.7 122.6 259.3 118.6999999999999 240 116.1999999999999zM377 343L279 441C274.5 445.5 268.4 448 262 448H256V320H384V326.1C384 332.4 381.5 338.5 377 343zM302.9 87.7C307 90.4 300.4 99.6 260.1 96.7C297.2 80.9 302.9 87.7 302.9 87.7z"/></svg><span>CV</span></a></li>
+    </ul>
+  </div>
+</section>
+<section class="section news-section" aria-labelledby="news-title">
+  <h2 class="section-title" id="news-title">News</h2>
+  <ul class="news-list">{% for item in site.data.research.news limit:4 %}<li><span class="date">{{ item.date }}</span><span>{{ item.text }}</span></li>{% endfor %}</ul>
+  <details class="older-news"><summary>Earlier updates <span aria-hidden="true">↓</span></summary><ul class="news-list">{% for item in site.data.research.news offset:4 %}<li><span class="date">{{ item.date }}</span><span>{{ item.text }}</span></li>{% endfor %}</ul></details>
+</section>
+<section class="section" id="publications" aria-labelledby="papers-title">
+  <div class="section-heading"><h2 id="papers-title">Publications</h2><a href="{{ '/publications/' | relative_url }}">Browse by topic <span aria-hidden="true">↗</span></a></div>
+  <p class="section-note">* Equal contribution.</p>
+  {% include academic-papers.html %}
+</section>
+<section class="section" id="projects" aria-labelledby="projects-title">
+  <h2 class="section-title" id="projects-title">Additional Research</h2>
+  <article class="paper project-row">
+    <a class="paper-image" href="{{ '/files/Point2GS_manuscript.pdf' | relative_url }}"><img src="{{ '/images/point2gs.png' | relative_url }}" alt="Point2GS reconstructing objects and indoor scenes from images and point clouds" loading="lazy" width="220" height="150"></a>
+    <div class="paper-body"><h3><a href="{{ '/files/Point2GS_manuscript.pdf' | relative_url }}">Point2GS: Generalized Plug-and-Play 3D Gaussian Splatting</a></h3><p class="paper-authors"><strong>Mengqi Zhang</strong><sup>*</sup>, Yang Fu<sup>*</sup>, Judy Hoffman, Sifei Liu, Xiaolong Wang</p><div class="paper-links"><a href="{{ '/files/Point2GS_manuscript.pdf' | relative_url }}">paper</a><button class="tldr-toggle" type="button" aria-expanded="true" aria-controls="point2gs-summary" hidden>TL;DR <span aria-hidden="true">▸</span></button></div><p class="paper-summary" id="point2gs-summary">3D Gaussian reconstruction from uncalibrated images and point clouds, with zero-shot transfer across object and scene datasets.</p></div>
+  </article>
+</section>
+<section class="section" id="experience" aria-labelledby="experience-title">
+  <div class="section-heading"><h2 id="experience-title">Experience</h2><a href="{{ site.data.research.cv | relative_url }}">Full CV <span aria-hidden="true">↗</span></a></div>
+  {% include academic-experience.html %}
+</section>
+{% include academic-service.html %}

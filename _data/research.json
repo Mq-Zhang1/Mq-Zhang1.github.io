@@ -1,0 +1,256 @@
+{
+  "name": "Mengqi Zhang",
+  "email": "mq.zhang7@outlook.com",
+  "scholar": "https://scholar.google.com/citations?user=N1jzRPEAAAAJ&hl=en",
+  "github": "https://github.com/Mq-Zhang1",
+  "linkedin": "https://www.linkedin.com/in/mengqi-z-9a83341bb/",
+  "cv": "/files/Mengqi_Zhang_CV.pdf",
+  "interests": "My research focuses on <strong>robust and generalizable embodied intelligence</strong> by grounding generative and multimodal models in physical structure and dynamics. I develop <strong>video-action models</strong> with video prediction priors, and <strong>diagnostic benchmarks</strong> for world models’ physical consistency and generalization.",
+  "news": [
+    {
+      "date": "2026.07",
+      "text": "<span aria-hidden=\"true\">🤖</span> <a href=\"https://deva-model.github.io/\">DeVA</a> project page and robot demos are live!"
+    },
+    {
+      "date": "2026.06",
+      "text": "<span aria-hidden=\"true\">🎉</span> <a href=\"https://smf-vto.github.io/\">SMF-VTO</a> presented as an <strong>oral</strong> at the CVPR 2026 AI4CC Workshop."
+    },
+    {
+      "date": "2026.05",
+      "text": "<span aria-hidden=\"true\">🎉</span> <a href=\"https://sahilkhose.github.io/wfm-eval-cvpr26/\">WFM-Eval</a> accepted to CVPR 2026 workshops: Video World Models &amp; FMEA."
+    },
+    {
+      "date": "2026.05",
+      "text": "<span aria-hidden=\"true\">🎉</span> <a href=\"https://openreview.net/forum?id=hyB6UchStf\">SPOT</a> accepted to CVPR 2026 workshops: MUSI &amp; Visual Concepts."
+    },
+    {
+      "date": "2026.01",
+      "text": "<span aria-hidden=\"true\">🎓</span> Moved to <strong>UC Irvine</strong> with Judy Hoffman’s group."
+    },
+    {
+      "date": "2025.05",
+      "text": "<span aria-hidden=\"true\">💼</span> Joined <strong>Amazon</strong> as an Applied Research Scientist intern."
+    },
+    {
+      "date": "2024.12",
+      "text": "<span aria-hidden=\"true\">🎉</span> <a href=\"https://meshformer3d.github.io/\">MeshFormer</a> presented as an <strong>oral at NeurIPS 2024</strong>."
+    },
+    {
+      "date": "2024.08",
+      "text": "<span aria-hidden=\"true\">🎓</span> Started my Ph.D. at <strong>Georgia Tech</strong> with Judy Hoffman."
+    },
+    {
+      "date": "2024.02",
+      "text": "<span aria-hidden=\"true\">🎉</span> <a href=\"https://mq-zhang1.github.io/HOIDiffusion/\">HOIDiffusion</a> accepted to <strong>CVPR 2024</strong>."
+    },
+    {
+      "date": "2024.01",
+      "text": "<span aria-hidden=\"true\">🎉</span> <a href=\"https://patchdm.github.io/\">Patch-DM</a> accepted to <strong>ICLR 2024</strong>."
+    }
+  ],
+  "papers": [
+    {
+      "id": "deva",
+      "title": "DeVA: Decoupled Video-Action Model with physical guidance for robot policy learning",
+      "authors": "<strong>Mengqi Zhang</strong>, Sahil Khose, Simar Kareer, Yuchen Song, Unnat Jain, Judy Hoffman",
+      "venue": "In submission",
+      "year": "2026",
+      "topic": "world",
+      "image": "/images/deva.jpg",
+      "image_alt": "DeVA robot performing a bimanual handover",
+      "video": "/images/deva-demo.mp4",
+      "summary": "Transferring visual and physical priors from video models into robot policies, with strong generalization and up to 20× fewer training examples than the baseline.",
+      "url": "https://deva-model.github.io/",
+      "links": [
+        {
+          "name": "paper",
+          "url": "https://arxiv.org/abs/2607.24159"
+        },
+        {
+          "name": "project & demos",
+          "url": "https://deva-model.github.io/"
+        }
+      ]
+    },
+    {
+      "id": "wfm-eval",
+      "title": "WFM-Eval: Interpretable Error Diagnostics for Video World Models in Robotics",
+      "authors": "Sahil Khose, <strong>Mengqi Zhang</strong>, Prithvijit Chattopadhyay, Judy Hoffman",
+      "venue": "CVPR 2026 · Video World Models & FMEA Workshops",
+      "year": "2026",
+      "topic": "world",
+      "image": "/images/wfm-eval.png",
+      "image_alt": "WFM-Eval taxonomy of object hallucination and temporal consistency errors",
+      "summary": "Diagnosing failures that standard video metrics miss: five world models, two robot datasets, and links to downstream policy performance.",
+      "url": "https://sahilkhose.github.io/wfm-eval-cvpr26/",
+      "links": [
+        {
+          "name": "paper",
+          "url": "https://sahilkhose.github.io/wfm-eval-cvpr26/assets/wfm-eval-paper.pdf"
+        },
+        {
+          "name": "project",
+          "url": "https://sahilkhose.github.io/wfm-eval-cvpr26/"
+        }
+      ]
+    },
+    {
+      "id": "spot",
+      "title": "SPOT: Structured Prompting with Object-centric Tokens for open-world scene graphs",
+      "authors": "<strong>Mengqi Zhang</strong>, Sahil Khose, Fiona Ryan, Judy Hoffman",
+      "venue": "CVPR 2026 · MUSI & Visual Concepts Workshops",
+      "year": "2026",
+      "topic": "3d",
+      "image": "/images/spot.png",
+      "image_alt": "SPOT predicting spatial and semantic relationships between objects",
+      "summary": "Spatially and semantically grounded scene graphs with open-source VLMs, including cross-domain generalization and zero-shot 3D transfer.",
+      "url": "https://openreview.net/forum?id=hyB6UchStf",
+      "links": [
+        {
+          "name": "paper",
+          "url": "https://openreview.net/pdf?id=hyB6UchStf"
+        },
+        {
+          "name": "OpenReview",
+          "url": "https://openreview.net/forum?id=hyB6UchStf"
+        }
+      ]
+    },
+    {
+      "id": "smf-vto",
+      "title": "Style-Instructed Mask-Free Virtual Try-On",
+      "authors": "<strong>Mengqi Zhang</strong>, Qi Li, Mehmet Saygin Seyfioglu, Karim Bouyarmane",
+      "venue": "CVPR 2026 · AI4CC Workshop",
+      "honor": "Oral",
+      "year": "2026",
+      "topic": "generation",
+      "image": "/images/smf-vto.jpg",
+      "image_alt": "Virtual try-on results with natural-language control over garment styles",
+      "summary": "Mask-free virtual try-on with natural-language control over garment types and wearing styles.",
+      "url": "https://smf-vto.github.io/",
+      "links": [
+        {
+          "name": "paper",
+          "url": "https://arxiv.org/abs/2603.29587"
+        },
+        {
+          "name": "project",
+          "url": "https://smf-vto.github.io/"
+        }
+      ]
+    },
+    {
+      "id": "meshformer",
+      "title": "MeshFormer: High-Quality Mesh Generation with 3D-Guided Reconstruction Model",
+      "authors": "Minghua Liu<sup>*</sup>, Chong Zeng<sup>*</sup>, Xinyue Wei, Ruoxi Shi, Linghao Chen, Chao Xu, <strong>Mengqi Zhang</strong>, Zhaoning Wang, Xiaoshuai Zhang, Isabella Liu, Hongzhi Wu, Hao Su",
+      "venue": "NeurIPS 2024",
+      "honor": "Oral",
+      "year": "2024",
+      "topic": "3d",
+      "image": "/images/meshformer_thumbnail.png",
+      "image_alt": "3D textured meshes reconstructed by MeshFormer",
+      "summary": "High-quality textured mesh reconstruction with 3D guidance; contributed to text-conditioned multi-view generation.",
+      "url": "https://meshformer3d.github.io/",
+      "links": [
+        {
+          "name": "paper",
+          "url": "https://arxiv.org/abs/2408.10198"
+        },
+        {
+          "name": "project",
+          "url": "https://meshformer3d.github.io/"
+        }
+      ]
+    },
+    {
+      "id": "hoidiffusion",
+      "title": "HOIDiffusion: Generating Realistic 3D Hand-Object Interaction Data",
+      "authors": "<strong>Mengqi Zhang</strong><sup>*</sup>, Yang Fu<sup>*</sup>, Zheng Ding, Sifei Liu, Zhuowen Tu, Xiaolong Wang",
+      "venue": "CVPR 2024",
+      "year": "2024",
+      "topic": "generation",
+      "image": "/images/hoidiffusion_thumbnail.avif",
+      "image_alt": "Generated hand-object interactions with controlled geometry and appearance",
+      "summary": "Controllable hand-object interaction synthesis with disentangled geometry and appearance, improving downstream 6D object pose estimation.",
+      "url": "https://mq-zhang1.github.io/HOIDiffusion/",
+      "links": [
+        {
+          "name": "paper",
+          "url": "https://arxiv.org/abs/2403.12011"
+        },
+        {
+          "name": "project",
+          "url": "https://mq-zhang1.github.io/HOIDiffusion/"
+        },
+        {
+          "name": "code",
+          "url": "https://github.com/Mq-Zhang1/HOIDiffusion"
+        }
+      ]
+    },
+    {
+      "id": "patch-dm",
+      "title": "Patched Denoising Diffusion Models For High-Resolution Image Synthesis",
+      "authors": "Zheng Ding<sup>*</sup>, <strong>Mengqi Zhang</strong><sup>*</sup>, Jiajun Wu, Zhuowen Tu",
+      "venue": "ICLR 2024",
+      "year": "2024",
+      "topic": "generation",
+      "image": "/images/patchdm-thumbnail.png",
+      "image_alt": "High-resolution landscape generated with Patch-DM",
+      "summary": "Resolution-agnostic diffusion for high-resolution synthesis and generation beyond training resolution.",
+      "url": "https://patchdm.github.io/",
+      "links": [
+        {
+          "name": "paper",
+          "url": "https://arxiv.org/abs/2308.01316"
+        },
+        {
+          "name": "project",
+          "url": "https://patchdm.github.io/"
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "name": "Amazon",
+      "role": "Applied Research Scientist",
+      "date": "May – Aug. 2025",
+      "description": "Contributed to virtual try-on development and delivery in <a href=\"https://docs.aws.amazon.com/nova/latest/userguide/image-gen-vto.html\">Amazon Nova Canvas</a>. Developed mask-free, style-instructed virtual try-on with 10–60% lower FID across two benchmarks."
+    },
+    {
+      "name": "Hillbot",
+      "role": "Machine Learning Engineer",
+      "date": "Feb. – Jun. 2024",
+      "description": "Text-to-3D generation in MeshFormer and automated 3D human asset creation for avatar generation."
+    }
+  ],
+  "education": [
+    {
+      "name": "University of California, Irvine",
+      "degree": "Ph.D. Student in Computer Science",
+      "date": "Jan. 2026 – Present",
+      "detail": "Advisor: Judy Hoffman"
+    },
+    {
+      "name": "Georgia Institute of Technology",
+      "degree": "Ph.D. Student in Computer Science",
+      "date": "Aug. 2024 – Dec. 2025",
+      "detail": "Advisor: Judy Hoffman"
+    },
+    {
+      "name": "University of California, San Diego",
+      "degree": "M.S. in Machine Learning",
+      "date": "Sept. 2021 – Jun. 2023",
+      "detail": "Advisors: Xiaolong Wang and Zhuowen Tu"
+    },
+    {
+      "name": "Zhejiang University",
+      "degree": "B.E. in Biosystem Engineering",
+      "date": "Sept. 2017 – Jun. 2021",
+      "detail": "Advisor: Tao Lin"
+    }
+  ],
+  "reviewing": "CVPR ’25’26 · NeurIPS ’25’26 · ICLR ’26 · ICCV ’25 · CoRL ’26 · ECCV ’24 · WACV ’25",
+  "role": "Ph.D. Student · Computer Science · UC Irvine"
+}
