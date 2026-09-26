@@ -5,7 +5,7 @@
   "github": "https://github.com/Mq-Zhang1",
   "linkedin": "https://www.linkedin.com/in/mengqi-z-9a83341bb/",
   "cv": "/files/Mengqi_Zhang_CV.pdf",
-  "interests": "My research focuses on <strong>robust and generalizable embodied intelligence</strong> by grounding generative and multimodal models in physical structure and dynamics. I develop <strong>video-action models</strong> with video prediction priors, and <strong>diagnostic benchmarks</strong> for world models’ physical consistency and generalization.",
+  "interests": "My research focuses on <strong>robust and generalizable embodied intelligence</strong>, spanning world models, 3D perception, and robot learning. I am interested in how models acquire physical understanding from visual experience, and how we improve their ability to reason and act in unfamiliar environments.",
   "news": [
     {
       "date": "2026.07",
